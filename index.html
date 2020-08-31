@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Calculadora de Bases</title>
+
+<style type="text/css">
+form{
+	border: 5px double black; 
+	background-color: #FAE3B4; 
+	padding: 4px;
+	text-align:left;
+	left:37%;
+	top:29%;
+	width:270px;
+	height:270px;
+	}
+	
+	label{
+	margin-top: 8px;
+	}
+	input{
+	margin-top: 8px; 
+	background-color: white;
+	}
+
+</style>
+
+</head>
+<body>
+		<form name="convert">
+			<div>
+				<h3><a name="titulo"></a><img src="icone.png" height="20" width= auto>Calculadora de Bases</h1>
+			</div>
+
+			<div>
+				<label>Binário:</label>
+				<input type="text" id="binario" size="7" onchange="converterBase('binario', 2)"> 
+			</div>
+
+			<div>
+				<label>Octal:</label>
+				<input type="text" id="octal" size="7" onchange="converterBase('octal', 8)">
+			</div>
+
+			<div>
+				<label>Decimal:</label>
+				<input type="text" id="decimal" size="7" onchange="converterBase('decimal', 10)">
+			</div>
+
+			<div>
+				<label>Hexadecimal:</label>
+				<input type="text" id="hexadecimal" size="7" onchange="converterBase('hexadecimal', 16)">
+			</div>
+		<br /><br />
+		<input type="button" value="limpar" onclick="limparTela();">
+		</form>
+
+	<script type="text/javascript">
+		function retornaCampoPeloID(idCampo) {
+			return document.getElementById(idCampo);
+		}
+
+		function converterBase(descricaoBase, baseNumerica) {
+			if(parseInt(retornaCampoPeloID(descricaoBase).value, baseNumerica)) {
+				if("binario" != descricaoBase) { 
+					retornaCampoPeloID("binario").value = parseInt(retornaCampoPeloID(descricaoBase).value, baseNumerica).toString(2);
+				}
+
+				if("octal" != descricaoBase) { 
+					retornaCampoPeloID("octal").value = parseInt(retornaCampoPeloID(descricaoBase).value, baseNumerica).toString(8);
+				}
+
+				if("decimal" != descricaoBase) { 
+					retornaCampoPeloID("decimal").value = parseInt(retornaCampoPeloID(descricaoBase).value, baseNumerica).toString(10);
+				}
+				
+				if("hexadecimal" != descricaoBase) { 
+					retornaCampoPeloID("hexadecimal").value = parseInt(retornaCampoPeloID(descricaoBase).value, baseNumerica).toString(16); 
+				}
+			} else {
+				if("binario" != descricaoBase) { 
+					retornaCampoPeloID("binario").value = "";
+				}
+
+				if("octal" != descricaoBase) { 
+					retornaCampoPeloID("octal").value = "";
+				}
+				
+				if("decimal" != descricaoBase) { 
+					retornaCampoPeloID("decimal").value = "";
+				}
+				
+				if("hexadecimal" != descricaoBase) { 
+					retornaCampoPeloID("hexadecimal").value = "";
+				}
+			}
+		}
+
+		function limparTela() {
+			document.convert.binario.value = "";
+			document.convert.octal.value = "";
+			document.convert.decimal.value = "";
+			document.convert.hexadecimal.value = "";
+		}
+	</script>
+</body>
+
+</html>
